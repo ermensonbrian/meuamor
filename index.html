@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Thaissa, Eu Te Amo!</title>
+    <title>Thaissa, eu te amo!</title>
     <style>
         body {
             background-color: #ffb6c1;
@@ -15,10 +15,10 @@
             font-size: 3em;
             margin-top: 20px;
         }
-        .love {
-            font-size: 1.2em;
-            margin: 2px;
-            display: inline-block;
+        #typedText {
+            font-size: 2em;
+            margin-top: 20px;
+            white-space: pre-wrap;
         }
         .heart {
             position: absolute;
@@ -48,9 +48,9 @@
     </style>
 </head>
 <body>
-    <h1>Thaissa, Eu Te Amo!</h1>
+    <h1>Thaissa, eu te aamo!</h1>
     <button id="musicButton">Tocar Música</button>
-    <div id="loves"></div>
+    <div id="typedText"></div>
 
     <audio id="romanticMusic" loop>
         <source src="musica.mp3" type="audio/mpeg">
@@ -58,14 +58,7 @@
     </audio>
 
     <script>
-        const container = document.getElementById('loves');
-        for (let i = 0; i < 1000; i++) {
-            const span = document.createElement('span');
-            span.className = 'love';
-            span.textContent = 'Eu te amo ';
-            container.appendChild(span);
-        }
-
+        // Efeito de corações caindo
         function createHeart() {
             const heart = document.createElement('div');
             heart.className = 'heart';
@@ -78,7 +71,6 @@
                 heart.remove();
             }, 5000);
         }
-
         setInterval(createHeart, 300);
 
         // Controle de música
@@ -89,11 +81,25 @@
             if (music.paused) {
                 music.play();
                 musicButton.textContent = 'Pausar Música';
+                startTyping();
             } else {
                 music.pause();
                 musicButton.textContent = 'Tocar Música';
             }
         });
+
+        // Efeito de digitação
+        const textContainer = document.getElementById('typedText');
+        let message = 'Eu te amo '.repeat(1000);
+        let index = 0;
+
+        function startTyping() {
+            if (index < message.length) {
+                textContainer.textContent += message.charAt(index);
+                index++;
+                setTimeout(startTyping, 50); // velocidade (50 ms por letra)
+            }
+        }
     </script>
 </body>
 </html>
