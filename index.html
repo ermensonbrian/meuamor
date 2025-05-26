@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Thaissa, eu te amo!</title>
+    <title>Thaissa, Eu te amo mt</title>
     <style>
         body {
             background-color: #ffb6c1;
@@ -16,9 +16,11 @@
             margin-top: 20px;
         }
         #typedText {
-            font-size: 2em;
+            font-size: 1.5em;
             margin-top: 20px;
+            padding: 0 20px;
             white-space: pre-wrap;
+            transition: color 0.5s;
         }
         .heart {
             position: absolute;
@@ -48,7 +50,7 @@
     </style>
 </head>
 <body>
-    <h1>Thaissa, eu te aamo!</h1>
+    <h1>Thaissa</h1>
     <button id="musicButton">Tocar Música</button>
     <div id="typedText"></div>
 
@@ -58,7 +60,48 @@
     </audio>
 
     <script>
-        // Efeito de corações caindo
+        const message = `
+Você não é algo para se admirar?
+Porque seu brilho é como um espelho
+E eu não posso deixar de notar
+Que você reflete neste meu coração
+
+Se você algum dia se sentir sozinha
+E o brilho me fizer difícil de encontrar
+Saiba que eu sempre estou
+Paralelo do outro lado
+
+Porque com sua mão na minha mão
+E um bolso cheio de alma
+Eu posso te dizer que não há lugar
+Que não poderíamos ir
+Basta colocar sua mão no vidro
+Eu estarei tentando te puxar para dentro
+Você só precisa ser forte
+
+Porque eu não quero te perder agora
+Eu estou olhando bem para a outra metade de mim
+O vazio que estava no meu coração
+É um espaço que agora você preenche
+Me mostre como lutar por isso agora
+E eu te direi, querida, foi fácil
+Voltar aqui para você, quando eu percebi
+Que você sempre esteve bem aqui
+
+É como se você fosse meu espelho
+Meu espelho olhando de volta para mim
+Eu não poderia ser maior
+Com mais ninguém ao meu lado
+E agora está claro como esta promessa
+Que estamos fazendo
+Duas reflexões em uma só
+Porque é como se você fosse meu espelho
+Meu espelho olhando de volta para mim, olhando de volta para mim
+
+`;
+
+        const loveMessage = "Eu te amo";
+
         function createHeart() {
             const heart = document.createElement('div');
             heart.className = 'heart';
@@ -66,38 +109,51 @@
             heart.style.left = Math.random() * window.innerWidth + 'px';
             heart.style.animationDuration = (2 + Math.random() * 3) + 's';
             document.body.appendChild(heart);
-
-            setTimeout(() => {
-                heart.remove();
-            }, 5000);
+            setTimeout(() => { heart.remove(); }, 5000);
         }
         setInterval(createHeart, 300);
 
-        // Controle de música
         const music = document.getElementById('romanticMusic');
         const musicButton = document.getElementById('musicButton');
-
         musicButton.addEventListener('click', () => {
             if (music.paused) {
                 music.play();
                 musicButton.textContent = 'Pausar Música';
-                startTyping();
+                if (!typingStarted) startTyping();
             } else {
                 music.pause();
                 musicButton.textContent = 'Tocar Música';
             }
         });
 
-        // Efeito de digitação
         const textContainer = document.getElementById('typedText');
-        let message = 'Eu te amo '.repeat(1000);
         let index = 0;
+        let typingStarted = false;
+        let currentColor = 'white';
+        let writingLove = false;
+        let loveIndex = 0;
 
         function startTyping() {
-            if (index < message.length) {
+            typingStarted = true;
+            if (!writingLove && index < message.length) {
                 textContainer.textContent += message.charAt(index);
                 index++;
-                setTimeout(startTyping, 50); // velocidade (50 ms por letra)
+                if (index % 10 === 0) {
+                    currentColor = currentColor === 'white' ? '#ff69b4' : 'white';
+                    textContainer.style.color = currentColor;
+                }
+                setTimeout(startTyping, 50);
+            } else if (!writingLove) {
+                writingLove = true;
+                setTimeout(startTyping, 500);
+            } else if (loveIndex < loveMessage.length) {
+                textContainer.textContent += loveMessage.charAt(loveIndex);
+                loveIndex++;
+                if (loveIndex % 2 === 0) {
+                    currentColor = currentColor === 'white' ? '#ff69b4' : 'white';
+                    textContainer.style.color = currentColor;
+                }
+                setTimeout(startTyping, 100);
             }
         }
     </script>
