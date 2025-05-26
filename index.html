@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Thaissa, Eu te amo mt</title>
+    <title>Amor</title>
     <style>
         body {
             background-color: #ffb6c1;
@@ -16,8 +16,8 @@
             margin-top: 20px;
         }
         #typedText {
-            font-size: 1.5em;
-            margin-top: 20px;
+            font-size: 2em;
+            margin-top: 40px;
             padding: 0 20px;
             white-space: pre-wrap;
             transition: color 0.5s;
@@ -61,46 +61,13 @@
 
     <script>
         const message = `
-Você não é algo para se admirar?
-Porque seu brilho é como um espelho
-E eu não posso deixar de notar
-Que você reflete neste meu coração
-
-Se você algum dia se sentir sozinha
-E o brilho me fizer difícil de encontrar
-Saiba que eu sempre estou
-Paralelo do outro lado
-
-Porque com sua mão na minha mão
-E um bolso cheio de alma
-Eu posso te dizer que não há lugar
-Que não poderíamos ir
-Basta colocar sua mão no vidro
-Eu estarei tentando te puxar para dentro
-Você só precisa ser forte
-
-Porque eu não quero te perder agora
-Eu estou olhando bem para a outra metade de mim
-O vazio que estava no meu coração
-É um espaço que agora você preenche
-Me mostre como lutar por isso agora
-E eu te direi, querida, foi fácil
-Voltar aqui para você, quando eu percebi
-Que você sempre esteve bem aqui
-
-É como se você fosse meu espelho
+"É como se você fosse meu espelho
 Meu espelho olhando de volta para mim
 Eu não poderia ser maior
-Com mais ninguém ao meu lado
-E agora está claro como esta promessa
-Que estamos fazendo
-Duas reflexões em uma só
-Porque é como se você fosse meu espelho
-Meu espelho olhando de volta para mim, olhando de volta para mim
-
+Com mais ninguém ao meu lado"
 `;
 
-        const loveMessage = "Eu te amo";
+        const loveMessage = "Eu te amo, essa músicame lembra vc";
 
         function createHeart() {
             const heart = document.createElement('div');
@@ -142,7 +109,7 @@ Meu espelho olhando de volta para mim, olhando de volta para mim
                     currentColor = currentColor === 'white' ? '#ff69b4' : 'white';
                     textContainer.style.color = currentColor;
                 }
-                setTimeout(startTyping, 50);
+                setTimeout(startTyping, 80);
             } else if (!writingLove) {
                 writingLove = true;
                 setTimeout(startTyping, 500);
@@ -153,7 +120,7 @@ Meu espelho olhando de volta para mim, olhando de volta para mim
                     currentColor = currentColor === 'white' ? '#ff69b4' : 'white';
                     textContainer.style.color = currentColor;
                 }
-                setTimeout(startTyping, 100);
+                setTimeout(startTyping, 150);
             }
         }
     </script>
